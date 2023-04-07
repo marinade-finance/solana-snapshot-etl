@@ -21,6 +21,9 @@ memmap2 = "0.5.5"
 itertools = "0.10.3"
 tar = "0.4.38"
 zstd = "0.11.2"
+whirlpool = { git = "https://github.com/orca-so/whirlpools", tag = "0.2.0", package = "whirlpool", features = ["cpi"] }
+anchor-lang = { git = "https://github.com/project-serum/anchor", tag = "v0.20.1", version = "0.20.1", package = "anchor-lang" }
+anchor-spl = { git = "https://github.com/project-serum/anchor", tag = "v0.20.1", version = "0.20.1", package = "anchor-spl" }
 
 # Binary deps
 borsh = { version = "0.9.3", optional = true }
@@ -34,33 +37,23 @@ reqwest = { version = "0.11.11", features = ["blocking"], optional = true }
 rusqlite = { version = "0.28.0", features = ["bundled"], optional = true }
 serde_json = { version = "1.0.82", optional = true }
 solana-geyser-plugin-interface = { version = "1.11.3", optional = true }
-solana-program = { version = "1.11.3", optional = true }
+solana-program = { version = "1.15.2" }
 solana_rbpf = { version = "0.2.31", optional = true }
 spl-token = { version = "3.3.0", optional = true }
 json5 = { version = "0.4.1", optional = true }
+ed25519-dalek = "1.0.1"
+bs58 = "0.4.0"
+num_enum = "0.5.1"
+num_enum_derive = "0.5.1"
+num-derive = "0.3.3"
+num-traits = "0.2.15"
+uint = "0.9.5"
+arrayref = "0.3.6"
 
 [features]
 parallel = []
-standalone = [
-    "borsh",
-    "crossbeam",
-    "csv",
-    "env_logger",
-    "indicatif",
-    "libloading",
-    "num_cpus",
-    "parallel",
-    "reqwest",
-    "rusqlite",
-    "serde_json",
-    "solana-geyser-plugin-interface",
-    "solana-program",
-    "spl-token",
-    "json5",
-]
-opcode_stats = [
-    "solana_rbpf",
-]
+standalone = ["borsh", "crossbeam", "csv", "env_logger", "indicatif", "libloading", "num_cpus", "parallel", "reqwest", "rusqlite", "serde_json", "solana-geyser-plugin-interface", "spl-token", "json5"]
+opcode_stats = ["solana_rbpf"]
 
 [[bin]]
 name = "solana-snapshot-etl"

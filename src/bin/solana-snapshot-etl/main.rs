@@ -16,11 +16,14 @@ use std::io::{stdout, IoSliceMut, Read, Write};
 use std::path::{Path, PathBuf};
 
 mod csv;
+mod error_solend;
 mod geyser;
 mod geyser_plugin;
+mod math;
 mod mpl_metadata;
 mod programs;
 mod sqlite;
+pub mod state;
 
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
@@ -98,6 +101,7 @@ fn _main() -> Result<(), Box<dyn std::error::Error>> {
         info!("Done!");
         info!("Dumped {} accounts", stats.accounts_total);
         info!("Dumped {} token accounts", stats.token_accounts_total);
+        info!("Dumped {} metaplex accounts", stats.metaplex_accounts_total);
     }
     if let Some(programs) = args.programs_out {
         info!("Dumping program accounts to {}", &programs);
